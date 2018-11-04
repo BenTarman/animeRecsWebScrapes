@@ -1,0 +1,46 @@
+USER UPLOADS a myanimelist profile
+
+"sign in with myanimelist"
+
+1 button reccomends from whole list = click it and shit processes
+
+Gives back list of most reccomended shows AND comments on said show
+
+MAKE SURE TO WEIGHT SCORES
+(above 5) weight more favorable.
+(below 5) less favorable.
+(is a 5) no preference.
+
+
+LET USER apply only certain shows
+1. by score
+2. by genre
+3. by explicit name (some sort of way to checkmark shit sounds dank)
+
+OPTIONS
+1. either have whole database already
+anime (recs, comment)
+recs = myanimelist, reddit, etc
+
+2. dynamically find it depending on user input (maybe cache results)
+
+
+
+let's try making my own api first since that seems like a more dank solution
+api will update every week or some shit (using celery)
+
+
+
+GET request (anime as argument)
+gets the reccomendations for other animes
+
+
+DATABASE
+
+ANIME
+list of [rec-anime]
+
+
+REC-ANIME
+#num recs
+#source (start with just myanimelist then maybe just add reddit and other shit)
