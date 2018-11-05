@@ -44,3 +44,28 @@ list of [rec-anime]
 REC-ANIME
 #num recs
 #source (start with just myanimelist then maybe just add reddit and other shit)
+
+
+
+
+HOSINTG
+ec2 instance with database and these scripts
+ec2 instance for the api
+another ec2 instance for the website
+
+connect with aws RDS
+
+
+THE AI PORTION
+can probably brute force it for initial testing.
+try to get people to use it to get data...
+
+
+
+LAST PART
+once you have a training set though try apply collaborative filtering algorithm
+
+
+
+
+
