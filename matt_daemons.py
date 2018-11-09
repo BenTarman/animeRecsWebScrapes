@@ -11,7 +11,7 @@ def start_daemon(pidf):
 
     # pidfile is a context
     with daemon.DaemonContext(
-            working_directory='/home/bentarman/pythonCodes/animeRecsWebScrapes',
+            working_directory='.',
             umask=0o002,
             pidfile=pidfile.TimeoutPIDLockFile(pidf),
     ):
@@ -20,6 +20,6 @@ def start_daemon(pidf):
 
 
 if __name__ == "__main__":
-    pid = '/home/bentarman/pythonCodes/animeRecsWebScrapes/get_anime.pid'
+    pid = './get_anime.pid'
 
     start_daemon(pid)
