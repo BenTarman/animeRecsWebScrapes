@@ -16,7 +16,7 @@ if [[ $1 = "start" ]]; then
 elif [[ $1 = "stop" ]]; then
 	case $2 in
 		get_animes|get_anime|getAnime)
-			start-stop-daemon -K --pidfile get_anime.pid
+			start-stop-daemon -K --pidfile pid/get_anime.pid
 			;;
 	esac
 

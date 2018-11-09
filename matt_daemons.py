@@ -20,6 +20,6 @@ def start_daemon(pidf):
 
 
 if __name__ == "__main__":
-    pid = './get_anime.pid'
+    pid = './pid/get_anime.pid'
 
     start_daemon(pid)
