@@ -3,7 +3,7 @@ import daemon
 import argparse
 from daemon import pidfile
 import time
-from myanimelist import get_anime
+from get_anime import get_anime
 
 
 def start_daemon(pidf):

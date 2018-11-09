@@ -7,7 +7,7 @@
 
 if [[ $1 = "start" ]]; then
 	case $2 in
-		get_animes|get_anime|getAnime)
+		get_anime*|getAnime*)
 			python3 matt_daemons.py
 			;;
 	esac
@@ -15,7 +15,7 @@ if [[ $1 = "start" ]]; then
 
 elif [[ $1 = "stop" ]]; then
 	case $2 in
-		get_animes|get_anime|getAnime)
+		get_anime*|getAnime*)
 			start-stop-daemon -K --pidfile pid/get_anime.pid
 			;;
 	esac
@@ -24,3 +24,8 @@ else
 	echo 'no valid arg'
 fi
 
+
+
+
+# elif [[ $1 = "list" ]]; then
+#	ls pid

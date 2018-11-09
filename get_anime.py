@@ -11,9 +11,14 @@ import psycopg2
 
 
 def get_anime():
+    # redirict stdout to debug file
+    orig_stdout = sys.stdout
+    orig_stdout  # annoying didn't use local var error :S
+
+    log_file = open('logs/get_anime.log', 'w')
+    sys.stdout = log_file
     f = open("secret", "r")
     dbpassword = f.read().strip()
-
 
     conn_text = "dbname=anime_recs user=eango "\
                 "host='ec2-18-212-22-176.compute-1.amazonaws.com' "\
@@ -22,7 +27,6 @@ def get_anime():
     conn = psycopg2.connect(conn_text)
     conn.autocommit = True  # autocommit any statement to save uh time
     curr = conn.cursor()
-
 
     # make database tables and shit
     def init_tables():
@@ -46,9 +50,7 @@ def get_anime():
                      ");"
         curr.execute(query_text)
 
-
     init_tables()
-
 
     def parse_anime_show(url):
         # from the link we can get the unique id for db to use
@@ -66,8 +68,11 @@ def get_anime():
         anime_name = soup.find('span', {'itemprop': 'name'}).text
         anime_name = anime_name.replace("'", "''")
 
-        anime_score = float(soup.find('div', {'class': 'fl-l score'}).text.strip())
+        anime_score = float(soup.find('div',
+                                      {'class': 'fl-l score'}).text.strip())
 
+        print('parsing anime ', anime_name)
+        log_file.flush()
         query_text = "insert into anime values ({0}, '{1}', {2})".format(
             anime_id, anime_name, anime_score)
 
@@ -104,7 +109,9 @@ def get_anime():
                 num_recs = int(recs.find('strong').text)
 
             rec_text = elem.find(
-                'div', {'class': 'spaceit_pad detail-user-recs-text'}).text.strip()
+                'div', {'class':
+                        'spaceit_pad detail-user-recs-text'}).text.strip()
+
             rec_text = rec_text.replace("'", "''")
 
             if anime_rec_name is not None:
@@ -121,7 +128,6 @@ def get_anime():
         for recNum, recId in num_recs_arr:
             perc_rec = int(recNum) / sum([x for x, _ in num_recs_arr])
             perc_rec *= 100
-            print(recId, perc_rec)
 
             query_text = "update recommended_anime set perc_recs={0}"\
                          " where rec_anime_id={1}".format(perc_rec, recId)
