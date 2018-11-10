@@ -1,0 +1,54 @@
+# This script will get the new anime in the season
+# This script should update every season honestly, it will be scheduled to
+# check start of each month
+# scores should be updated too
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
